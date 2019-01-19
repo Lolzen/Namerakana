@@ -6,8 +6,8 @@ kicks/stuns windows etc ein/ausschaltbar
 größe (höhe. breite), svhrift, schriftgröße, positionen einstellbar
 farben einstellbar (schrift, bars(?))
 
---offline check
 --spec check (heal etc)
+complete spelllist
 ]]
 
 
@@ -219,15 +219,14 @@ local function updateBars()
 						end
 					end)
 				end
-			else
-				if bars[i] then
-					if not UnitInParty(bars[i].string1:GetText()) then
-						bars[i]:SetStatusBarColor(0.5, 0.5, 0.5, 0)
-						bars[i].bg:SetVertexColor(1, 1, 1, 0)
-						bars[i].icon:SetTexture(nil)
-						bars[i].string1:SetText(nil)
-						bars[i].string2:SetText(nil)
-					end
+			end
+			if bars[i] then
+				if not UnitInParty(bars[i].string1:GetText()) then
+					bars[i]:SetStatusBarColor(0.5, 0.5, 0.5, 0)
+					bars[i].bg:SetVertexColor(1, 1, 1, 0)
+					bars[i].icon:SetTexture(nil)
+					bars[i].string1:SetText(nil)
+					bars[i].string2:SetText(nil)
 				end
 			end
 		end
@@ -238,28 +237,13 @@ end
 
 function kickFrame.COMBAT_LOG_EVENT_UNFILTERED(timestamp, event, ...)
 	local _, eventType, _, _, sourceName, _, _, _, destName, _, _, sourceSpellId = CombatLogGetCurrentEventInfo()
-	if IsInGroup(sourceName) then
+	if IsInGroup("player") then
 		if UnitInParty(sourceName) then
-			if sourceName == UnitName("Player") then
-				if ns.spells[select(2, UnitClass(sourceName))]["kick"] == sourceSpellId then
-					for i=1, #bars do
-						if bars[i].string1:GetText() == sourceName then
-							bars[i].timer:Play()
-							bars[i].icon:SetTexture(GetSpellTexture(ns.spells[select(2, UnitClass(sourceName))]["kick"]))
-						end
-					end
-				end
-			else
-				for i=2, GetNumSubgroupMembers()+1 do
-					if sourceName == UnitName("party"..i-1) then
-						if ns.spells[select(2, UnitClass(sourceName))]["kick"] == sourceSpellId then
-						--	for k=1, #bars do
-							if bars[i].string1:GetText() == sourceName then
-								bars[i].timer:Play()
-								bars[i].icon:SetTexture(GetSpellTexture(ns.spells[select(2, UnitClass(sourceName))]["kick"]))
-							end
-						--	end
-						end
+			if ns.spells[select(2, UnitClass(sourceName))]["kick"] == sourceSpellId then
+				for i=1, #bars do
+					if bars[i].string1:GetText() == sourceName then
+						bars[i].timer:Play()
+						bars[i].icon:SetTexture(GetSpellTexture(ns.spells[select(2, UnitClass(sourceName))]["kick"]))
 					end
 				end
 			end
@@ -277,6 +261,6 @@ kickFrame:SetScript("OnEvent", function(self, event, ...)
 	if(self[event]) then
 		self[event](self, event, ...)
 	else
-		print("Interruptannouncer debug: "..event)
+		print("Namerakana debug: "..event)
 	end 
 end)

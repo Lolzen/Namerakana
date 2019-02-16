@@ -5,5 +5,11 @@
 ## Notes: Party spell cooldowntracker
 ## SavedVariables: Namerakana
 
+libs/libs.xml
+
+sharedmedia.lua
+defaults.lua
 spells.lua
-core.lua
+kick.lua
+optionpanel.lua
+slashcommands.lua

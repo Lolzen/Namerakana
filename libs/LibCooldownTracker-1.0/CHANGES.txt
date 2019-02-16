@@ -1,0 +1,536 @@
+commit fcb220a8c742c94cb61c6c420a9a5e179aa30961
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Sat Nov 17 19:13:08 2018 +0100
+
+    update cooldowns
+
+commit ffc91b6e22022104e4b8fff1e924edfeeaded657
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Tue Sep 18 20:08:05 2018 +0200
+
+    add cds
+
+commit b49ce806013a9dcd80197a1e527be2e7b71b30d6
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Tue Sep 18 19:57:15 2018 +0200
+
+    fix slaren/GladiusEx#17
+
+commit 9c2107cea556f695bb4aafa6b40f27fd376c0ccb
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Mon Sep 10 20:35:41 2018 +0200
+
+    add some cooldowns as well as new racials and stuff
+
+commit 1850eebaa8d63f1da1e35bc4cc376b70a4b1c823
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Mon Sep 10 19:56:49 2018 +0200
+
+    use my LibGroupInSpecT
+
+commit b5e702d3aae64c073b2a028a10b023f0cc3630a3
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Mon Sep 3 00:01:21 2018 +0200
+
+    BfA update, fix #3
+
+commit f4637bafee55f23a0c6f6642bb78aae784ca63f6
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Mon Aug 20 20:19:23 2018 +0200
+
+    update interface version
+
+commit 21a06b46b3650bc45750d3a3be0312cdc8e9f484
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Mon Aug 20 20:16:43 2018 +0200
+
+    fix LibCT for BfA, not done yet
+
+commit aa73f5ca395498c9d0a4e3129f49331a9c775732
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Mon Feb 5 22:32:18 2018 +0100
+
+    lib.xml fucked up, yet again...
+
+commit c01018e36281d8c5d9a431ab883f756caf63f394
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Mon Feb 5 21:05:33 2018 +0100
+
+    fix wonky lib.xml, missing files
+
+commit 6c8bed7bcb3a49a15ebe5cf1aaf453dce564d965
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Fri Feb 2 14:10:15 2018 +0100
+
+    Upgrades
+
+commit 8d93e1b71143bae34be4ddd877df7e0bab578309
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Sun Dec 24 02:16:52 2017 +0100
+
+    upgrade cooldowns, thanks kimmi2
+
+commit f703b7d40530f114f918f9d1b08bfc1909b73814
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Fri Oct 6 13:01:15 2017 +0200
+
+    LibCT update
+
+commit 854f50c6742825cb3a7ddfd5be7f9a95bbbfc3e4
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Sun Sep 3 16:45:51 2017 +0200
+
+    remove curse .toc metadata
+
+commit 07e89a9f517a93eaada86bc9d9d801ef9719de12
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Thu Aug 31 23:51:58 2017 +0200
+
+    Update to Legion
+
+commit a2ebfc645c3f5a60d7bd74949cf26028f4aa3f40
+Author: slaren <ddevesa@gmail.com>
+Date:   Thu Mar 5 20:00:45 2015 +0100
+
+    Updated list of cooldowns based on Leilameda changes
+
+commit a2d551b710eda161df5d1f23c8b7236fddb2f9d6
+Author: slaren <ddevesa@gmail.com>
+Date:   Wed Oct 22 18:07:17 2014 +0200
+
+    More fixes
+
+commit 2814220a8320e702867cae3d7a22fa35da3a42de
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Tue Oct 21 20:53:44 2014 +0200
+
+    Fix paladin Seraphim/Beacon of insight id switch
+
+commit 948445fe7560cfb07fc61e62c48adb3a74d091e9
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Tue Oct 21 20:14:45 2014 +0200
+
+    Bug fixes
+
+commit 79e1a0aa2adb2e891d1833212b05f10741b8eda8
+Author: slaren <ddevesa@gmail.com>
+Date:   Tue Oct 21 18:08:23 2014 +0200
+
+    Small fixes
+
+commit 831236c5215d368b0e3341a342bb6a25b9d720f0
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Tue Oct 21 14:27:20 2014 +0200
+
+    Update druid talents and spells
+
+commit 1447940b4621fab56c04d656d4ee2d898634bb12
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Tue Oct 21 14:07:29 2014 +0200
+
+    Update hunter talents and spells
+
+commit 024fef91bf02e37ccc488651b09e2d591462ef87
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Tue Oct 21 13:40:46 2014 +0200
+
+    Update shaman talents and spells
+
+commit c1edab3123cd920a43a833690033096e836052e9
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 23:13:43 2014 +0200
+
+    Update warlock talents and spells
+    
+    Havoc is set at 25s even though at level 100 it will be 20s.
+
+commit 3607dc3c23ca38ebac278f954c7b3ed313dc3c90
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 22:58:35 2014 +0200
+
+    Update monk talents and spells
+
+commit 0ef4fddf733e203b8187b4e9ae90ec22f0761588
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 22:34:46 2014 +0200
+
+    Update priest talents and spells
+
+commit 7d003d380694ecc97ad5aff24ff17fb28f462e9c
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 21:25:54 2014 +0200
+
+    Update paladin talents and spells
+
+commit ea0238064415fa4ee52b82ff7017bb41dd0454b8
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 21:11:20 2014 +0200
+
+    Update warrior talents and spells
+
+commit fc29d42b20a497872fa0a352243e85ca8b2eab5d
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 20:31:03 2014 +0200
+
+    Add a replace statement for deathknight's defile
+
+commit 45c1cae397352b002b5b9b4bc44862a2fbcd5f1f
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 20:30:42 2014 +0200
+
+    Update mage talents and spells
+
+commit 946ed6a6f2a2e7003ffbd5502560f6fa737bcd7f
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 20:02:53 2014 +0200
+
+    Update rogue talents and spells
+
+commit 1db7a69e49be0e3e48debebed09ba0b07b842743
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 19:53:52 2014 +0200
+
+    Update items
+
+commit 754b3dee5846c829cfbba849de684e353dcafb1f
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 19:53:01 2014 +0200
+
+    Update racials
+
+commit c7b7df99c920d52accd17e83d621b0c5c350300b
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 19:45:24 2014 +0200
+
+    Update deathknight talents
+
+commit 242711935f52a50b977608bb4edf8779cc869b2e
+Author: Frederik Kunstner <frederik.kunstner@gmail.com>
+Date:   Mon Oct 20 19:34:11 2014 +0200
+
+    Update deathknight spells
+
+commit ff40c8d5aef9607eee5c4f2f3d83465fa5925f7f
+Author: slaren <ddevesa@gmail.com>
+Date:   Mon Oct 20 18:57:53 2014 +0200
+
+    better debug messages
+
+commit b34c865ceaeb3977e5af196f88306c8818dec061
+Author: slaren <ddevesa@gmail.com>
+Date:   Wed Feb 19 15:09:30 2014 +0100
+
+    monk: added dematerialize (untested)
+
+commit 52b2cd7dca42e4f3fd2250087c1869ef6765fe6c
+Author: slaren <ddevesa@gmail.com>
+Date:   Wed Sep 11 16:09:38 2013 +0200
+
+    priest: updated spirit shell duration
+
+commit 8ed50e66340c1f8e0e245e31333092b7306b6aa0
+Author: slaren <ddevesa@gmail.com>
+Date:   Wed Sep 11 16:02:50 2013 +0200
+
+    updated for 5.4
+
+commit 9348b9701b559e65e4d878ad2ae418514ecb12d6
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat Jun 15 18:42:53 2013 +0200
+
+    bumped version
+
+commit 0efe759e37f20fb5e9b5a5e031dc475e154fc081
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat Jun 15 18:42:33 2013 +0200
+
+    shaman: updated thunderstorm cooldown to reflect the pvp set bonus
+
+commit c23beb0220b4043bda82b9dc2bde44b210958a3f
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat Jun 15 18:41:59 2013 +0200
+
+    mage: added remove curse
+
+commit caa0517e515c2a30d1b1749e2f634c65821dfd77
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat Jun 15 18:41:44 2013 +0200
+
+    druid: added survival instincts to feral
+
+commit 2726244c669e90a7cca1b47b1d54e10df798e54a
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat Jun 15 14:10:30 2013 +0200
+
+    druid: added feral cyclone
+
+commit 274a8dc4778f538ba3a44d37c601245a79c95f23
+Author: slaren <ddevesa@gmail.com>
+Date:   Wed Jun 12 15:31:18 2013 +0200
+
+    monk: added support for chii torpedo (shown as roll)
+
+commit 6f5fcf06d09d92d62f1ae6be06a971d508e74dbf
+Author: slaren <ddevesa@gmail.com>
+Date:   Mon May 27 11:56:53 2013 +0200
+
+    hunter: removed feign death (can't be detected anyway)
+
+commit aadc99bc93e417ddf3165851207ee50b0b5ce777
+Author: slaren <ddevesa@gmail.com>
+Date:   Mon May 27 11:38:28 2013 +0200
+
+    druid: added heart of the wild spellids for the specs
+
+commit 1a855ae481b204cc118a76b62537aee860503a3f
+Author: slaren <ddevesa@gmail.com>
+Date:   Mon May 27 11:28:48 2013 +0200
+
+    warlock: added observer spells, more spellids for spell lock
+
+commit b1479e9c91485a00649d14385d6caafcf2dc5a96
+Author: slaren <ddevesa@gmail.com>
+Date:   Wed May 22 12:52:32 2013 +0200
+
+    updated for 5.3
+
+commit 5f60df35af581bc506557fc2bcd0f2768ed73d02
+Author: slaren <ddevesa@gmail.com>
+Date:   Wed May 22 12:40:31 2013 +0200
+
+    druid: fixed some spells that have different spellids in different specs or forms
+
+commit ad54aa21c9b1bf30083943b6b4f80315ff3b47e1
+Author: slaren <ddevesa@gmail.com>
+Date:   Sun May 19 15:19:48 2013 +0200
+
+    bumping minor version
+
+commit 6eb4be48d9187d57df691ce31c0eaf2f292ba856
+Author: slaren <ddevesa@gmail.com>
+Date:   Sun May 19 15:11:50 2013 +0200
+
+    warlock: added conflagrate, hand of gul'dan
+
+commit 5c48f07cc6bfe5cf4b07a0e1826f808a5804e20d
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat May 18 23:09:10 2013 +0200
+
+    warrior: added support for double time (2 charges on charge)
+
+commit 6b98ace6425641091c840c449f4ca714764a1cea
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat May 18 23:08:15 2013 +0200
+
+    priest: added angelic feather, fixed phantasm duration
+
+commit 8b59e72fbdb538307743a9e68538909015721912
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat May 18 23:07:37 2013 +0200
+
+    paladin: added support for clemency (2 charges on hands)
+
+commit b77669240a62672475009afb6a540601a3aeee11
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat May 18 23:07:02 2013 +0200
+
+    monk: added roll
+
+commit 61400e4d740adb4c7e1f18d24a5bd751280d760e
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat May 18 23:06:37 2013 +0200
+
+    druid: fixed skull bash, added savage defense
+
+commit 4844937eda248a0de8827ffc68a07ad3452743fc
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat May 18 23:06:00 2013 +0200
+
+    added support for spells with charges (roll, paladin hands)
+
+commit 5b1e4630aec18fa104acbdd0db7d88856f544844
+Author: slaren <ddevesa@gmail.com>
+Date:   Fri May 10 17:40:56 2013 +0200
+
+    added symbiosis spells
+
+commit e395b4689890bd22fac1c317c753036f978c3863
+Author: slaren <ddevesa@gmail.com>
+Date:   Fri May 10 00:31:44 2013 +0200
+
+    shaman: made purify spirit replace cleanse spirit
+
+commit 367b134e9e4b96a0f0b437062eeb2ec2da2975e9
+Author: slaren <ddevesa@gmail.com>
+Date:   Thu May 9 11:13:19 2013 +0200
+
+    rogue: fixed cheat death
+
+commit 88981a5a03f92672b461f75b7af52ff1bb31ff18
+Author: slaren <ddevesa@gmail.com>
+Date:   Sun May 5 13:53:13 2013 +0200
+
+    warlock: added demonic circle: teleport, reduced unending resolve cooldown to account for the set bonus
+
+commit f987594d65a0c978425ebbff467b819e5244aa25
+Author: slaren <ddevesa@gmail.com>
+Date:   Sun May 5 13:48:13 2013 +0200
+
+    hunter: reduced cds of traps and black arrow to account for the set bonus
+
+commit 6bfbde6aaad6bfb6ba3f419e56cc8a2c93ee9561
+Author: slaren <ddevesa@gmail.com>
+Date:   Sun May 5 13:43:17 2013 +0200
+
+    druid: reduced swiftmend cooldown to account for the set bonus
+
+commit 780e7e83be84b7fb5d121cb0b9a421733f4424c6
+Author: slaren <ddevesa@gmail.com>
+Date:   Sun May 5 13:40:06 2013 +0200
+
+    mage: changed counterspell cooldown to 20 seconds to properly account for the set bonus
+
+commit 833e02484249a3a5960cfe65524d1ac68e3ffa2c
+Author: slaren <ddevesa@gmail.com>
+Date:   Sun May 5 13:34:52 2013 +0200
+
+    commented heroisms for now
+
+commit ae7f50afd9a14e5a35b1575b7946acf5288b34aa
+Author: slaren <ddevesa@gmail.com>
+Date:   Sun May 5 13:31:15 2013 +0200
+
+    added dk cooldowns
+
+commit 6a670cd370bde8480c91f947a46dab865c0fe082
+Author: slaren <ddevesa@gmail.com>
+Date:   Thu May 2 22:42:59 2013 +0200
+
+    rogue: added marked for death
+
+commit 8ff008bd115a85e90973af05c39428f18764a5c2
+Author: slaren <ddevesa@gmail.com>
+Date:   Thu May 2 22:40:58 2013 +0200
+
+    warlock: added carrion swarm
+
+commit 5ca29c6bff67c5de140053261f24f3052e95fc0a
+Author: slaren <ddevesa@gmail.com>
+Date:   Thu May 2 22:36:31 2013 +0200
+
+    shaman: added shamanistic rage to elemental
+
+commit 4b4c4ec2d6491feabbc8eb0bb5a327e507c0a0d2
+Author: slaren <ddevesa@gmail.com>
+Date:   Thu May 2 22:34:47 2013 +0200
+
+    monk: added ring of peace
+
+commit 44122205273e4d58c00d8b977a93aae100758f4c
+Author: slaren <ddevesa@gmail.com>
+Date:   Thu May 2 22:05:41 2013 +0200
+
+    paladin: fixed guardian of ancient kings/protection not having the proper specID
+
+commit cbeada0773d80b8ab83790272efac4d730f75c3c
+Author: slaren <ddevesa@gmail.com>
+Date:   Tue Apr 30 20:18:14 2013 +0200
+
+    added healthstone
+
+commit 2f87ac7c1a88c50b4b3b7b7de04e9e75297ae5dc
+Author: slaren <ddevesa@gmail.com>
+Date:   Tue Apr 30 19:01:56 2013 +0200
+
+    added warlock cooldowns
+
+commit 5135d061e14155e8df1bc0dc8ad58e0dbeda1d46
+Author: slaren <ddevesa@gmail.com>
+Date:   Tue Apr 30 12:49:55 2013 +0200
+
+    hunter: added list of spells that readiness resets
+
+commit a72f480963659353b82dafbae9469007e983b583
+Author: slaren <ddevesa@gmail.com>
+Date:   Tue Apr 30 12:22:21 2013 +0200
+
+    added hunter cooldowns
+
+commit 589b1b847adae782f684e56382ce71b91d3b4d7f
+Author: slaren <ddevesa@gmail.com>
+Date:   Sun Apr 28 01:05:21 2013 +0200
+
+    generate and use lookup tables for IterateCooldowns, making it much faster
+
+commit 0cb032d3038f676a0769181ac2ed6f13df607337
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat Apr 27 23:17:39 2013 +0200
+
+    several cooldowns updated
+
+commit 610e54f7e15e970a0e8158384b5d5cb3e059b3aa
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat Apr 27 22:23:15 2013 +0200
+
+    fixed typo that prevented the warrior cooldowns from loading
+
+commit c5132cb9ea54c29ee1ca6e64e6cfe4bdb1d2d75d
+Author: slaren <ddevesa@gmail.com>
+Date:   Sat Apr 27 16:04:51 2013 +0200
+
+    paladin: added Blinding Light
+
+commit e6a2d9fb07d7358560538d4cdb207399b07ba97e
+Author: slaren <ddevesa@gmail.com>
+Date:   Fri Apr 26 13:59:39 2013 +0200
+
+    more doc formatting changes
+
+commit adc94177a1d0586df81c1dde5665c127a9854350
+Author: slaren <ddevesa@gmail.com>
+Date:   Fri Apr 26 13:50:07 2013 +0200
+
+    trying different formatting for the doc
+
+commit 743d523e811d5e79538d91de42d15e3076fb81f4
+Author: slaren <ddevesa@gmail.com>
+Date:   Fri Apr 26 13:27:23 2013 +0200
+
+    added some documentation, normalized some data, fixed some problems
+
+commit 40d57e01bc100c50b4795c1d3ca055edcb77dc8e
+Author: slaren <ddevesa@gmail.com>
+Date:   Fri Apr 26 12:20:51 2013 +0200
+
+    moved state to the library table to make upgrades possible
+
+commit be5e265bb784b8c5740bbdb9133ee60717ec0bd5
+Author: slaren <ddevesa@gmail.com>
+Date:   Fri Apr 26 12:15:17 2013 +0200
+
+    prefixed event names with LCT_
+
+commit 0ced4b5e0a157595293766d49ff304b00616a9e3
+Author: slaren <ddevesa@gmail.com>
+Date:   Fri Apr 26 12:07:15 2013 +0200
+
+    moved the data to different files for each class, races and items
+
+commit 846c4662a20503ce847c0212912c3c17e51f0c7d
+Author: slaren <ddevesa@gmail.com>
+Date:   Thu Apr 25 17:53:09 2013 +0200
+
+    fixed typo
+
+commit aa72e1c616c572162cc733de1852621bcc404a6c
+Author: slaren <ddevesa@gmail.com>
+Date:   Wed Apr 24 18:58:03 2013 +0200
+
+    removed debug prints
+
+commit 1219c7e96bdb3d5b4c3f35e99ffce3597549b4d0
+Author: slaren <ddevesa@gmail.com>
+Date:   Wed Apr 24 18:46:15 2013 +0200
+
+    initial commit
+

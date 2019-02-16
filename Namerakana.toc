@@ -5,6 +5,7 @@
 ## Notes: Party spell cooldowntracker
 ## SavedVariables: Namerakana
 
+locales.xml
 libs/libs.xml
 
 sharedmedia.lua

@@ -3,6 +3,7 @@
 local LSM = LibStub("LibSharedMedia-3.0")
 
 local addon, ns = ...
+local L = ns.L
 
 ns.panel = CreateFrame("Frame", addon.."Panel")
 ns.panel.name = addon
@@ -14,7 +15,7 @@ title:SetText("|cff5599ff"..addon.."|r")
 
 local about = ns.panel:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
-about:SetText("Shows bars for kicks/stuns/cds with times")
+about:SetText(L["Shows bars for kicks/stuns/cc with times"])
 
 local version = ns.panel:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 version:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 5, -20)
@@ -37,25 +38,25 @@ f:SetScript("OnEvent", function(self, event, addon)
 		header1:SetPoint("TOPLEFT", github, "BOTTOMLEFT", 0, -30)
 		
 		local cb1 = CreateFrame("CheckButton", "show_kickframe", ns.panel, "ChatConfigCheckButtonTemplate")
-		show_kickframeText:SetText("Show kicks")
+		show_kickframeText:SetText(L["Show kickwindow"])
 		cb1:SetChecked(Namerakana.kick.show)
 		cb1:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -5)
 		
 		local smallheader1 = ns.panel:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-		smallheader1:SetText("Bars")
+		smallheader1:SetText(L["Bars"])
 		smallheader1:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -10)
 		
 		local slider1 = CreateFrame("Slider", "kick_bar_height_slider", ns.panel, "OptionsSliderTemplate")
 		slider1:SetPoint("TOPLEFT", smallheader1, "BOTTOMLEFT", 0, -20)
 		kick_bar_height_sliderLow:SetText("1")
 		kick_bar_height_sliderHigh:SetText("20")
-		kick_bar_height_sliderText:SetText("Bar Height ("..Namerakana.kick.barheight..")")
+		kick_bar_height_sliderText:SetText(L["Bar Height"].." ("..Namerakana.kick.barheight..")")
 		slider1:SetMinMaxValues(1, 20)
 		slider1:SetValue(Namerakana.kick.barheight)
 		slider1:SetValueStep(1)
 		slider1:SetScript("OnValueChanged", function(self, event, arg1)
 			Namerakana.kick.barheight = math.floor(slider1:GetValue() + 0.5)
-			kick_bar_height_sliderText:SetText("Bar Height ("..Namerakana.kick.barheight..")")
+			kick_bar_height_sliderText:SetText(L["Bar Height"].." ("..Namerakana.kick.barheight..")")
 			ns.setBarHeight()
 		end)
 		
@@ -63,18 +64,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 		slider2:SetPoint("LEFT", slider1, "RIGHT", 30, 0)
 		kick_bar_width_sliderLow:SetText("50")
 		kick_bar_width_sliderHigh:SetText("200")
-		kick_bar_width_sliderText:SetText("Bar Width ("..Namerakana.kick.width..")")
+		kick_bar_width_sliderText:SetText(L["Bar Width"].." ("..Namerakana.kick.width..")")
 		slider2:SetMinMaxValues(50, 200)
 		slider2:SetValue(Namerakana.kick.width)
 		slider2:SetValueStep(1)
 		slider2:SetScript("OnValueChanged", function(self, event, arg1)
 			Namerakana.kick.width = math.floor(slider2:GetValue() + 0.5)
-			kick_bar_width_sliderText:SetText("Bar Width ("..Namerakana.kick.width..")")
+			kick_bar_width_sliderText:SetText(L["Bar Width"].." ("..Namerakana.kick.width..")")
 			ns.setBarWidth()
 		end)
 		
 		local smallheader2 = ns.panel:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-		smallheader2:SetText("Texture")
+		smallheader2:SetText(L["Texture"])
 		smallheader2:SetPoint("LEFT", smallheader1, "RIGHT", 330, 0)
 		
 		local selectedBarTexture_kick
@@ -110,7 +111,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		UIDropDownMenu_JustifyText(picker1, "LEFT")
 		
 		local smallheader3  = ns.panel:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-		smallheader3:SetText("Font")
+		smallheader3:SetText(L["Font"])
 		smallheader3:SetPoint("TOPLEFT", slider1, "BOTTOMLEFT", 0, -30)
 		
 		local fontobjects_kick = {}
@@ -152,7 +153,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		UIDropDownMenu_JustifyText(picker2, "LEFT")
 	
 		local smallheader4  = ns.panel:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-		smallheader4:SetText("Font Flag")
+		smallheader4:SetText(L["Font Flag"])
 		smallheader4:SetPoint("LEFT", smallheader3, "RIGHT", 120, 0)
 
 		local fontflags = {
@@ -196,18 +197,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 		slider3:SetPoint("LEFT", picker3, "RIGHT", 10, 3)
 		kick_font_size_sliderLow:SetText("1")
 		kick_font_size_sliderHigh:SetText("30")
-		kick_font_size_sliderText:SetText("Font Size ("..Namerakana.kick.fontsize..")")
+		kick_font_size_sliderText:SetText(L["Font Size"].." ("..Namerakana.kick.fontsize..")")
 		slider3:SetMinMaxValues(1, 30)
 		slider3:SetValue(Namerakana.kick.fontsize)
 		slider3:SetValueStep(1)
 		slider3:SetScript("OnValueChanged", function(self, event, arg1)
 			Namerakana.kick.fontsize = math.floor(slider3:GetValue() + 0.5)
-			kick_font_size_sliderText:SetText("Font Size ("..Namerakana.kick.fontsize..")")
+			kick_font_size_sliderText:SetText(L["Font Size"].." ("..Namerakana.kick.fontsize..")")
 			ns.setFont()
 		end)
 		
 		local smallheader5  = ns.panel:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
-		smallheader5:SetText("Background Alpha")
+		smallheader5:SetText(L["Background Alpha"])
 		smallheader5:SetPoint("LEFT", smallheader4, "RIGHT", 260, 0)
 
 		local alphavalues = {

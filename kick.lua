@@ -240,7 +240,7 @@ local function updateBars(self, event, ...)
 			end
 		end
 	else
-		--kickFrame:Hide()
+		kickFrame:Hide()
 	end
 end
 

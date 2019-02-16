@@ -237,7 +237,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local function initialize(picker4, level)
 			local info = UIDropDownMenu_CreateInfo()
 			for k, v in pairs(alphavalues) do
-				if v == Namerakana.kick.backdropalpha then
+				if v == tonumber(Namerakana.kick.backdropalpha) then
 					selectedAlpha_kick = k
 				end
 				info = UIDropDownMenu_CreateInfo()

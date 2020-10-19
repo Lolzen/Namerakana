@@ -1,16 +1,19 @@
-## Interface: 80000
+## Interface: 90001
 ## Author: Lolzen
 ## Title: Namerakana
 ## Version: 1.0
 ## Notes: Party spell cooldowntracker
 ## SavedVariables: Namerakana
+## X-Embeds: LibGroupInSpecT-1.1
+## OptionalDeps: LibGroupInSpecT-1.1
 
-locales.xml
 libs/libs.xml
+locales.xml
 
 sharedmedia.lua
 defaults.lua
 spells.lua
 kick.lua
+#stun.lua
 optionpanel.lua
 slashcommands.lua

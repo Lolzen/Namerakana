@@ -1,9 +1,22 @@
 ﻿local addon, ns = ...
 
+--[[ checked:
+[ ] DEATHKNIGHT
+[ ] DEMONHUNTER
+[ ] DRUID
+[ ] HUNTER
+[ ] MAGE
+[ ] MONK
+[X] PALADIN
+    Notes: have to check if the talent is active
+[ ] PRIEST
+[ ] ROGUE
+[ ] SHAMAN
+[ ] WARLOCK
+[ ] WARRIOR
+]]
+
 ns.spells = {
---	["watched"] = {
-	
---	}
 	["DEATHKNIGHT"] = {
 		-- Blood
 		[250] = {
@@ -155,9 +168,16 @@ ns.spells = {
 	["PALADIN"] = {
 		-- Holy
 		[65] = {
-			-- Rebuke
 			["kick"] = {
 				["spellID"] = nil,
+			},
+			-- Hammer of Justice
+			["stun"] = {
+				["SpellID"] = 853,
+			},
+			-- Repentance
+			["cc"] = {
+				["spellID"] = 20066,
 			},
 		},
 		-- Protection
@@ -166,6 +186,14 @@ ns.spells = {
 			["kick"] = {
 				["spellID"] = 31935,
 			},
+			-- Hammer of Justice
+			["stun"] = {
+				["SpellID"] = 853,
+			},
+			-- Repentance
+			["cc"] = {
+				["spellID"] = 20066,
+			},
 		},
 		-- Retribution
 		[70] = {
@@ -173,9 +201,15 @@ ns.spells = {
 			["kick"] = {
 				["spellID"] = 96231,
 			},
+			-- Hammer of Justice
+			["stun"] = {
+				["SpellID"] = 853,
+			},
+			-- Repentance
+			["cc"] = {
+				["spellID"] = 20066,
+			},
 		},
---		["stun"] = 853, --hammer of justice
---		["cc"] = "", --"buße"
 	},
 	["PRIEST"] = {
 		-- Discipline

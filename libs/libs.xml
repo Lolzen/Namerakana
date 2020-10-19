@@ -2,8 +2,8 @@
 ..\FrameXML\UI.xsd">	
 	<Script file="libs\LibStub\LibStub.lua"/>
 	<Script file="libs\CallBackHandler-1.0\CallBackHandler-1.0.lua"/>
-	<Script file="libs\LibFunctional-1.0\functional.lua"/>
+	<Script file="libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua"/>
 	<Include file="libs\LibGroupInSpecT-1.1\lib.xml"/>
+	<Script file="libs\LibFunctional-1.0\functional.lua"/>
 	<Include file="libs\LibCooldownTracker-1.0\lib.xml"/>
-	<!--Script file="LibSharedMedia-3.0\LibSharedMedia-3.0.lua"/-->
 </Ui>

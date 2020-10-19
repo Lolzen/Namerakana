@@ -295,6 +295,15 @@ LCT_SpellData[63560] = {
 	cooldown = 60
 }
 -- DK/Unholy/talents
+-- Raise Abomination
+LCT_SpellData[288853] = {
+	class = "DEATHKNIGHT",
+	specID = { SPEC_DK_UNHOLY },
+	talent = true,
+	offensive = true,
+	cooldown = 90,
+  duration = 25
+}
 -- Summon Gargoyle
 LCT_SpellData[49206] = {
 	class = "DEATHKNIGHT",
@@ -331,15 +340,6 @@ LCT_SpellData[207289] = {
 	offensive = true,
 	duration = 12,
 	cooldown = 75
-}
--- Soul Reaper
-LCT_SpellData[130736] = {
-	class = "DEATHKNIGHT",
-	specID = { SPEC_DK_UNHOLY },
-	talent = true,
-	offensive = true,
-	duration = 8,
-	cooldown = 45
 }
 
 -- DK/pet

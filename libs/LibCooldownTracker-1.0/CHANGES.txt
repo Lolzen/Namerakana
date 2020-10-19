@@ -1,3 +1,67 @@
+commit 799b572acfb58f2921ca233ee112ccb30d4a0989
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Thu Oct 15 22:05:34 2020 +0200
+
+    Fix SL errors
+
+commit 17627f8ec644d599357c39c379e52baed3f30d88
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Mon Aug 10 21:33:35 2020 +0200
+
+    Updates, wowace#91
+
+commit 5a75c112648d2df37e7a78c27d46eddd70619b0a
+Author: Cabz <mayerchris10@yahoo.com>
+Date:   Tue Jul 28 21:57:57 2020 -0400
+
+    Update cooldowns_mage.lua
+    
+    Adding Klepto to mage
+
+commit 5a75c112648d2df37e7a78c27d46eddd70619b0a
+Author: Cabz <mayerchris10@yahoo.com>
+Date:   Tue Jul 28 21:57:57 2020 -0400
+
+    Update cooldowns_mage.lua
+    
+    Adding Klepto to mage
+
+commit e7166bf211e2014ad0e4c8cfb885e05f06af3b4e
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Fri May 15 01:08:05 2020 +0200
+
+    more commit changes
+
+commit 9d2a3194fa9813841a579b7d1f73eec10fbd83f0
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Sun Apr 12 21:57:02 2020 +0200
+
+    correctly detect spells
+
+commit cd926d12176021edc81b728356fd7072c2b593f8
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Wed Apr 8 16:43:48 2020 +0200
+
+    update pkgmeta
+
+commit b0630e8a0ba3da6722b709b567a637e995ed8822
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Tue Apr 7 12:46:15 2020 +0200
+
+    add missing file
+
+commit b894f92bbb3f595e0455261cde7a186c3407ac14
+Author: vendethiel <vendethiel@hotmail.fr>
+Date:   Tue Apr 7 00:43:03 2020 +0200
+
+    azerite update
+
+commit 1c6ebb6e0d67c3cca42f036c300d17dc3733dd7a
+Author: ven <vendethiel@hotmail.fr>
+Date:   Sat Jan 18 17:47:04 2020 +0100
+
+    Fix ironbark/barkskin confusion
+
 commit fcb220a8c742c94cb61c6c420a9a5e179aa30961
 Author: vendethiel <vendethiel@hotmail.fr>
 Date:   Sat Nov 17 19:13:08 2018 +0100

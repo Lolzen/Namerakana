@@ -8,11 +8,11 @@ LCT_SpellData[59544] = {
 }
 set_trinkets = {
 	-- Gladiator's Medallion
-	{ spellid = 208683, cooldown = 30 },
+	{ spellid = 208683, cooldown = 90 },
 	-- Honorable Medallion
-	{ spellid = 195710, cooldown = 30 },
+	{ spellid = 195710, cooldown = 90 },
 	-- Adaptation
-	{ spellid = 214027, cooldown = 30 },
+	{ spellid = 214027, cooldown = 90 },
 }
 -- Every Man For Himself
 LCT_SpellData[59752] = {
@@ -143,4 +143,9 @@ LCT_SpellData[255647] = {
 LCT_SpellData[256948] = {
 	race = "VoidElf",
 	cooldown = 180,
+}
+-- Fireblood (DarkIronDward)
+LCT_SpellData[265221] = {
+	race = "DarkIronDwarf",
+	cooldown = 120,
 }

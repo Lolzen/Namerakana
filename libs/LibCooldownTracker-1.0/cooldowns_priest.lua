@@ -20,13 +20,6 @@ LCT_SpellData[586] = {
 	duration = 10,
 	cooldown = 30
 }
--- Shroud of Concealment
-LCT_SpellData[114018] = {
-	class = "PRIEST",
-	defensive = true,
-	duration = 15,
-	cooldown = 300
-}
 -- Rapture
 LCT_SpellData[73325] = {
 	class = "PRIEST",
@@ -52,7 +45,7 @@ LCT_SpellData[32375] = {
 LCT_SpellData[8122] = {
 	class = "PRIEST",
 	cc = true,
-	cooldown = 60,
+	cooldown = 30, -- Technically 60, but most priests play with -30s talent.
 }
 -- Priest/mixed
 -- Purify
@@ -183,13 +176,6 @@ LCT_SpellData[209780] = {
 	defensive = true,
 	cooldown = 12,
 }
--- Shadow Covenant
-LCT_SpellData[204065] = {
-	class = "PRIEST",
-	specID = { SPEC_PRIEST_DISC },
-	talent = true,
-	cooldown = 12,
-}
 -- Schism
 LCT_SpellData[214621] = {
 	class = "PRIEST",
@@ -300,7 +286,7 @@ LCT_SpellData[2050] = {
 -- Greater Fade
 LCT_SpellData[213602] = {
 	class = "PRIEST",
-	specID = { SPEC_PRIEST_HOLY },
+	specID = { SPEC_PRIEST_HOLY, SPEC_PRIEST_SHADOW },
 	talent = true,
 	defensive = true,
 	cooldown = 45,
@@ -424,14 +410,6 @@ LCT_SpellData[108968] = {
 	specID = { SPEC_PRIEST_SHADOW },
 	talent = true,
 	cooldown = 300
-}
--- Dark Ascension
-LCT_SpellData[280711] = {
-	class = "PRIEST",
-	specID = { SPEC_PRIEST_SHADOW },
-	talent = true,
-	offensive = true,
-	cooldown = 60,
 }
 -- Psyfiend
 LCT_SpellData[211522] = {

@@ -11,11 +11,13 @@ local LGIST = LibStub("LibGroupInSpecT-1.1")
 local CT = LibStub("LibCooldownTracker-1.0")
 
 -- kickFrameframe
-local kickFrame = CreateFrame("Frame")
+local kickFrame = CreateFrame("Frame", nil, nil, "BackdropTemplate")
 local bars = {}
 
 local function initialize()
-	if not Namerakana.kick.show then return end
+--	if not Namerakana.kick.show then
+--		kickFrame:Hide()
+--	end
 	kickFrame:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", Namerakana.kick.XPos, Namerakana.kick.YPos)
 	kickFrame:SetSize(Namerakana.kick.width, Namerakana.kick.barheight)
 	kickFrame:SetMovable(true)
@@ -54,7 +56,7 @@ local function initialize()
 	for i=1, 5 do
 		-- statusbar
 		if not bars[i] then
-			bars[i] = CreateFrame("StatusBar", "StatusBar"..i, kickFrame)
+			bars[i] = CreateFrame("StatusBar", "StatusBar"..i, kickFrame, "BackdropTemplate")
 			bars[i]:SetHeight(Namerakana.kick.barheight)
 			bars[i]:SetWidth(kickFrame:GetWidth() - 9)
 			bars[i]:SetStatusBarTexture(LSM:Fetch("statusbar", Namerakana.kick.bartexture))
@@ -68,7 +70,7 @@ local function initialize()
 				insets = {left = -10, right = -1, top = -1, bottom = -1},
 			})
 			bars[i]:SetBackdropColor(0, 0, 0, Namerakana.kick.backdropalpha)
-			bars[i]:SetFrameStrata("HIGH")
+			--bars[i]:SetFrameStrata("HIGH")
 		end
 
 		-- storing the unit
@@ -97,10 +99,11 @@ local function initialize()
 
 		-- background
 		if not bars[i].bg then
-			bars[i].bg = bars[i]:CreateTexture(nil, "LOW")
+			bars[i].bg = bars[i]:CreateTexture(nil, "BACKGROUND")
 			bars[i].bg:SetAllPoints(bars[i])
 			bars[i].bg:SetTexture(LSM:Fetch("statusbar", Namerakana.kick.bartexture))
 			bars[i].bg:SetVertexColor(1, 1, 1, 0.2)
+			--bars[i].bg:SetFrameStrata("BACKGROUND")
 		end
 
 		-- icon
@@ -179,6 +182,13 @@ function kickFrame:LCT_CooldownUsed(event, unit, spellid)
 			for i=1, #bars do
 				if bars[i].string1:GetText() == UnitName(unit) then
 					if bars[i].spec ~= nil and ns.spells[select(2, UnitClass(unit))][bars[i].spec]["kick"]["spellID"] == spellid then
+						-- check for cd shortening talents
+						-- Shadow Priests: Last Word
+					--	if tracked.talents[263716] then
+					--		print("yes")
+					--	else
+					--		print("no")
+					--	end
 						bars[i].start = tracked.cooldown_start
 						bars[i].duration = tracked.cooldown_end - tracked.cooldown_start
 						bars[i].timer:Play()
@@ -244,21 +254,21 @@ local function updateBars(self, event, ...)
 	end
 end
 
-function ns.setBarHeight()
+function ns.setKickBarHeight()
 	kickFrame:SetHeight(Namerakana.kick.barheight)
 	for i=1, #bars do
 		bars[i]:SetHeight(Namerakana.kick.barheight)
 	end
 end
 
-function ns.setBarWidth()
+function ns.setKickBarWidth()
 	kickFrame:SetWidth(Namerakana.kick.width)
 	for i=1, #bars do
 		bars[i]:SetWidth(kickFrame:GetWidth() - 9)
 	end
 end
 
-function ns.setFont()
+function ns.setKickFont()
 	kickFrame.title:SetFont(LSM:Fetch("font", Namerakana.kick.font), Namerakana.kick.fontsize, Namerakana.kick.fontflag)
 	for i=1, #bars do
 		bars[i].string1:SetFont(LSM:Fetch("font", Namerakana.kick.font), Namerakana.kick.fontsize, Namerakana.kick.fontflag)
@@ -266,18 +276,26 @@ function ns.setFont()
 	end
 end
 
-function ns.setTexture()
+function ns.setKickTexture()
 	for i=1, #bars do
 		bars[i]:SetStatusBarTexture(LSM:Fetch("statusbar", Namerakana.kick.bartexture))
 		bars[i].bg:SetTexture(LSM:Fetch("statusbar", Namerakana.kick.bartexture))
 	end
 end
 
-function ns.setAlpha()
+function ns.setKickAlpha()
 	for i=1, #bars do
 		bars[i]:SetBackdropColor(0, 0, 0, Namerakana.kick.backdropalpha)
 	end
 end
+
+--function ns.setKickVisibility()
+--	if Namerakana.kick.show == true then
+--		kickFrame:Show()
+--	elseif Namerakana.kick.show == false then
+--		
+--	end
+--end
 
 kickFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 kickFrame:RegisterEvent("GROUP_ROSTER_UPDATE")

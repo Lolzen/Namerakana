@@ -62,7 +62,7 @@
 --     Returns an array with the set of unit ids for the current group.
 --]]
 
-local MAJOR, MINOR = "LibGroupInSpecT-1.1", 90
+local MAJOR, MINOR = "LibGroupInSpecT-1.1", tonumber (("$Revision: 86 $"):match ("(%d+)") or 0)
 
 if not LibStub then error(MAJOR.." requires LibStub") end
 local lib = LibStub:NewLibrary (MAJOR, MINOR)
@@ -75,11 +75,6 @@ if not lib.events then error(MAJOR.." requires CallbackHandler") end
 local UPDATE_EVENT = "GroupInSpecT_Update"
 local REMOVE_EVENT = "GroupInSpecT_Remove"
 local INSPECT_READY_EVENT = "GroupInSpecT_InspectReady"
-local QUEUE_EVENT = "GroupInSpecT_QueueChanged"
-
-local COMMS_PREFIX = "LGIST11"
-local COMMS_FMT = "1"
-local COMMS_DELIM = "\a"
 
 local INSPECT_DELAY = 1.5
 local INSPECT_TIMEOUT = 10 -- If we get no notification within 10s, give up on unit
@@ -87,7 +82,7 @@ local INSPECT_TIMEOUT = 10 -- If we get no notification within 10s, give up on u
 local MAX_ATTEMPTS = 2
 
 --[===[@debug@
-lib.debug = false
+lib.debug = true
 local function debug (...)
   if lib.debug then  -- allow programmatic override of debug output by client addons
     print (...) 
@@ -172,7 +167,6 @@ local UnitIsConnected                 = _G.UnitIsConnected
 local UnitIsPlayer                    = _G.UnitIsPlayer
 local UnitIsUnit                      = _G.UnitIsUnit
 local UnitName                        = _G.UnitName
-local SendAddonMessage                = C_ChatInfo and C_ChatInfo.SendAddonMessage or SendAddonMessage -- XXX 8.0 compat
 
 
 local global_spec_id_roles_detailed = {
@@ -255,11 +249,6 @@ function lib:PLAYER_LOGIN ()
   frame:RegisterEvent ("UNIT_NAME_UPDATE")
   frame:RegisterEvent ("UNIT_AURA")
   frame:RegisterEvent ("CHAT_MSG_ADDON")
-  if C_ChatInfo then -- XXX 8.0 compat
-    C_ChatInfo.RegisterAddonMessagePrefix (COMMS_PREFIX)
-  else
-    RegisterAddonMessagePrefix (COMMS_PREFIX)
-  end
 
   local guid = UnitGUID ("player")
   local info = self:BuildInfo ("player")
@@ -290,7 +279,7 @@ do
       if lib.state.debounce_send_update > 0 then
         local debounce = lib.state.debounce_send_update - elapsed
         lib.state.debounce_send_update = debounce
-        if debounce <= 0 then lib:SendLatestSpecData () end
+        --if debounce <= 0 then lib:SendLatestSpecData () end
       end
     end
     frame:SetScript("OnUpdate", frame.OnUpdate) -- this is good regardless of the handler check above because otherwise a new anonymous function is created every time the OnUpdate code runs
@@ -313,9 +302,11 @@ lib.static_cache.talents = {}                -- [talent_id]      -> { .spell_id,
 local tip = CreateFrame ("GameTooltip", MAJOR.."ScanTip", nil, "GameTooltipTemplate")
 tip:SetOwner (UIParent, "ANCHOR_NONE")
 
-function lib:GetCachedTalentInfo (class_id, tier, col, group, is_inspect, unit)
+function lib:GetCachedTalentInfo (class_id, tier, col, group, is_inspect, unit, is_pvp)
   local talents = self.static_cache.talents
-  local talent_id, name, icon, sel, avail = GetTalentInfo (tier, col, group, is_inspect, unit)
+  local fn = is_pvp and GetPvpTalentInfo or GetTalentInfo
+  local talent_id, name, icon, sel, avail = fn (tier, col, group, is_inspect, unit)
+  if is_pvp  then print ("GetCachedTalentInfo("..tostring(class_id)..","..tier..","..col..","..group..","..tostring(is_inspect)..","..tostring(unit)..") = "..tostring(talent_id) .. " ("..tostring(name)..")") end
   if not talent_id or not class_id then
     --[===[@debug@
     debug ("GetCachedTalentInfo("..tostring(class_id)..","..tier..","..col..","..group..","..tostring(is_inspect)..","..tostring(unit)..") returned nil") --@end-debug@]===]
@@ -390,7 +381,6 @@ function lib:Query (unit)
     mainq[guid] = 1
     staleq[guid] = nil
     self.frame:Show () -- Start timer if not already running
-    self.events:Fire (QUEUE_EVENT)
   end
 end
 
@@ -403,7 +393,6 @@ function lib:Refresh (unit)
   if not self.state.mainq[guid] then
     self.state.staleq[guid] = 1
     self.frame:Show ()
-    self.events:Fire (QUEUE_EVENT)
   end
 end
 
@@ -472,7 +461,6 @@ function lib:ProcessQueues ()
   if not next (mainq) and not next (staleq) and self.state.throttle == 0 and self.state.debounce_send_update <= 0 then
     frame:Hide() -- Cancel timer, nothing queued and no unthrottling to be done
   end
-  self.events:Fire (QUEUE_EVENT)
 end
 
 
@@ -502,7 +490,6 @@ function lib:BuildInfo (unit)
   if not class and not self.state.mainq[guid] then
     self.state.staleq[guid] = 1
     self.frame:Show ()
-    self.events:Fire (QUEUE_EVENT)
   end
 
   local is_inspect = not UnitIsUnit (unit, "player")
@@ -541,6 +528,15 @@ function lib:BuildInfo (unit)
         end
       end
     end
+    -- also fetch pvp talent
+    --for tier = 1, MAX_PVP_TALENT_TIERS do
+    --  for col = 1, MAX_PVP_TALENT_COLUMNS do
+    --    local talent, sel = self:GetCachedTalentInfo (info.class_id, tier, col, info.spec_group, is_inspect, unit, true)
+    --    if talent and talent.talent_id and sel then
+    --      info.talents[talent.talent_id] = talent
+    --    end
+    --  end
+    --end
   end
 
   info.glyphs = wipe (info.glyphs or {}) -- kept for addons that still refer to this
@@ -577,7 +573,6 @@ function lib:INSPECT_READY (guid)
   if finalize then
     ClearInspectPlayer ()
   end
-  self.events:Fire (QUEUE_EVENT)
 end
 
 
@@ -585,7 +580,7 @@ function lib:PLAYER_ENTERING_WORLD ()
   if self.commScope == "INSTANCE_CHAT" then
     -- Handle moving directly from one LFG to another
     self.commScope = nil
-    self:UpdateCommScope ()
+    --self:UpdateCommScope ()
   end
 end
 
@@ -616,7 +611,7 @@ function lib:GROUP_ROSTER_UPDATE ()
     end
   end
   wipe (members)
-  self:UpdateCommScope ()
+  --self:UpdateCommScope ()
 end
 
 
@@ -627,41 +622,6 @@ function lib:DoPlayerUpdate ()
 end
 
 
-function lib:SendLatestSpecData ()
-  local scope = self.commScope
-  if not scope then return end
-
-  local guid = UnitGUID ("player")
-  local info = self.cache[guid]
-  if not info then return end
-
-  -- fmt, guid, global_spec_id, talent1 -> MAX_TALENT_TIERS
-  -- sequentially, allow no gaps for missing talents we decode by index on the receiving end.
-  local datastr = COMMS_FMT..COMMS_DELIM..guid..COMMS_DELIM..(info.global_spec_id or 0)
-  local talentCount = 1
-  for k in pairs(info.talents) do
-    datastr = datastr..COMMS_DELIM..k
-    talentCount = talentCount + 1
-  end
-  for i=talentCount,MAX_TALENT_TIERS do
-    datastr = datastr..COMMS_DELIM..0
-  end
-
-  --[===[@debug@
-  debug ("Sending LGIST update to "..scope) --@end-debug@]===]
-  SendAddonMessage(COMMS_PREFIX, datastr, scope)
-end
-
-
-function lib:UpdateCommScope ()
-  local scope = (IsInGroup (LE_PARTY_CATEGORY_INSTANCE) and "INSTANCE_CHAT") or (IsInRaid () and "RAID") or (IsInGroup (LE_PARTY_CATEGORY_HOME) and "PARTY")
-  if self.commScope ~= scope then
-    self.commScope = scope
-    self:DoPlayerUpdate ()
-  end
-end
-
-
 -- Indicies for various parts of the split data msg
 local msg_idx = {}
 msg_idx.fmt            = 1
@@ -669,83 +629,6 @@ msg_idx.guid           = msg_idx.fmt + 1
 msg_idx.global_spec_id = msg_idx.guid + 1
 msg_idx.talents        = msg_idx.global_spec_id + 1
 msg_idx.end_talents    = msg_idx.talents + MAX_TALENT_TIERS - 1
-
-function lib:CHAT_MSG_ADDON (prefix, datastr, scope, sender)
-  if prefix ~= COMMS_PREFIX or scope ~= self.commScope then return end
-  --[===[@debug@
-  debug ("Incoming LGIST update from "..(scope or "nil").."/"..(sender or "nil")..": "..(datastr:gsub(COMMS_DELIM,";") or "nil")) --@end-debug@]===]
-
-  local data = { strsplit (COMMS_DELIM,datastr) }
-  local fmt = data[msg_idx.fmt]
-  if fmt ~= COMMS_FMT then return end -- Unknown format, ignore
-
-  local guid = data[msg_idx.guid]
-
-  local senderguid = UnitGUID(sender)
-  if senderguid and senderguid ~= guid then return end
-
-  local info = guid and self.cache[guid]
-  if not info then return end -- Never allow random message to create new group member entries!
-
-  local unit = self:GuidToUnit (guid)
-  if not unit then return end
-  if UnitIsUnit (unit, "player") then return end -- we're already up-to-date, comment out for solo debugging
-
-  self.state.throttle = self.state.throttle + 1
-  self.frame:Show () -- Ensure we're unthrottling
-  if self.state.throttle > 40 then return end -- If we ever hit this, someone's being "funny"
-
-  info.class_localized, info.class, info.race_localized, info.race, info.gender, info.name, info.realm = GetPlayerInfoByGUID (guid)
-  if info.realm and info.realm == "" then info.realm = nil end
-  info.class_id = self.static_cache.class_to_class_id[info.class]
-
-  local gspecs = self.static_cache.global_specs
-
-  local gspec_id           = data[msg_idx.global_spec_id] and tonumber (data[msg_idx.global_spec_id])
-  if not gspec_id or not gspecs[gspec_id] then return end -- Malformed message, avoid throwing errors by using this nil
-
-  info.global_spec_id      = gspec_id
-  info.spec_index          = gspecs[gspec_id].idx
-  info.spec_name_localized = gspecs[gspec_id].name_localized
-  info.spec_description    = gspecs[gspec_id].description
-  info.spec_icon           = gspecs[gspec_id].icon
-  info.spec_background     = gspecs[gspec_id].background
-  info.spec_role           = gspecs[gspec_id].role
-  info.spec_role_detailed  = global_spec_id_roles_detailed[gspec_id]
-
-  local need_inspect = nil
-  info.talents = wipe (info.talents or {})
-  local talents = self.static_cache.talents[info.class_id]
-  if talents then -- The group entry is created before we have inspect-data, so may not have cached talents yet
-    for i = msg_idx.talents, msg_idx.end_talents do
-      local talent_id = tonumber (data[i])
-      if talent_id and talent_id > 0 then
-        if talents[talent_id] then
-          info.talents[talent_id] = talents[talent_id]
-        else
-          -- While we had some talents for this class, we apparently didn't have all for this particular spec, so mark for inspect
-          need_inspect = 1
-        end
-      end
-    end
-  else
-    -- Talents weren't pre-cached, so mark for inspect
-    need_inspect = 1
-  end
-
-  info.glyphs = wipe (info.glyphs or {}) -- kept for addons that still refer to this
-
-  local mainq, staleq = self.state.mainq, self.state.staleq
-  local want_inspect = not need_inspect and self.inspect_ready_used and (mainq[guid] or staleq[guid]) and 1 or nil
-  mainq[guid], staleq[guid] = need_inspect, want_inspect
-  if need_inspect or want_inspect then self.frame:Show () end
-
-  --[===[@debug@
-  debug ("Firing LGIST update event for unit "..unit..", GUID "..guid) --@end-debug@]===]
-  self.events:Fire (UPDATE_EVENT, guid, unit, info)
-  self.events:Fire (QUEUE_EVENT)
-end
-
 
 function lib:UNIT_LEVEL (unit)
   if UnitInRaid (unit) or UnitInParty (unit) then
@@ -801,7 +684,6 @@ function lib:UNIT_AURA (unit)
           if not self.state.mainq[guid] then
             self.state.staleq[guid] = 1
             self.frame:Show ()
-            self.events:Fire (QUEUE_EVENT)
           end
         end
       elseif UnitIsConnected (unit) then
@@ -844,11 +726,6 @@ function lib:StaleInspections ()
 end
 
 
-function lib:IsInspectQueued (guid)
-  return guid and ((self.state.mainq[guid] or self.state.staleq[guid]) and true)
-end
-
-
 function lib:GetCachedInfo (guid)
   local group = self.cache
   return guid and group[guid]
@@ -884,7 +761,6 @@ function lib:Rescan (guid)
 
   -- Evict any stale entries
   self:GROUP_ROSTER_UPDATE ()
-  self.events:Fire (QUEUE_EVENT)
 end
 
 
